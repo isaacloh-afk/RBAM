@@ -59,10 +59,11 @@ There is no test suite, linter, or build step.
 - **Scroll reveal** — elements with the `reveal` class fade in via an IntersectionObserver; respects `prefers-reduced-motion`.
 - **Testimonials carousel** — data-driven by DOM order; add/remove a `.slide` and the dots, auto-rotate, prev/next, and keyboard arrows adapt automatically.
 - **Responsive nav** — sticky navbar collapses to a hamburger menu below 768px.
-- **Enquiry form** — client-side validation, honeypot spam protection, and AJAX submission via [FormSubmit](https://formsubmit.co/).
+- **Enquiry form** — client-side validation, honeypot spam protection, and AJAX submission via [FormSubmit](https://formsubmit.co/); a successful submission triggers a brief celebration (spoken thank-you via the Web Speech API + floating balloons), both of which no-op under `prefers-reduced-motion` or where unsupported.
 - **WhatsApp chat widget** — floating launcher with suggested-query chips that deep-link to `wa.me` with a prefilled message; the destination number lives in the `WHATSAPP_NUMBER` constant in `script.js`.
 - **SEO** — canonical, Open Graph / Twitter Card meta, `FinancialService` JSON-LD, `robots.txt`, and `sitemap.xml`.
 - **Social sharing** — dependency-free footer share links (LinkedIn / X / email) using share-intent URLs; no third-party widget scripts.
+- **Social profiles** — dependency-free profile links (LinkedIn / X / email) with inline SVG icons in the contact section and footer, plus a `sameAs` array in the JSON-LD; profile URLs are currently placeholders pending real accounts.
 
 ## Enquiry form
 

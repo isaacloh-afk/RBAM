@@ -1111,6 +1111,90 @@ textarea:focus-visible {
   color: #9a8a78;
 }
 
+/* ----------------------- Social profile links -------------------- */
+/*
+ * .social — a row of profile icon-buttons.
+ * Used in two contexts:
+ *   1. .footer__social inside .footer__brand (icon-only variant)
+ *   2. .contact__intro nav.social (icon + label variant)
+ *
+ * BEM: social / social__link / social__link--icon-only / social__icon / social__label
+ */
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: var(--space-2);
+}
+
+/* Contact-section variant: icon + visible text label */
+.social__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: var(--mist);
+  background: transparent;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.75rem;
+  text-decoration: none;
+  transition: color 0.18s var(--ease), border-color 0.18s var(--ease),
+    background-color 0.18s var(--ease), transform 0.18s var(--ease);
+}
+
+.social__link:hover {
+  color: var(--beacon);
+  border-color: var(--beacon);
+  background: rgba(226, 96, 58, 0.06);
+  transform: translateY(-1px);
+}
+
+.social__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+/* Footer icon-only variant: circular icon badge, no visible text */
+.social__link--icon-only {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.social__link--icon-only .social__icon {
+  width: 17px;
+  height: 17px;
+}
+
+/* The text label is present in the DOM for screen readers but hidden visually
+   in the icon-only variant. We use the same technique as .sr-only. */
+.social__link--icon-only .social__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Footer social row lives just below the tagline */
+.footer__social {
+  margin-top: var(--space-2);
+}
+
 /* --------------------- Scroll-in animations ---------------------- */
 .reveal {
   opacity: 0;
@@ -1508,4 +1592,87 @@ textarea:focus-visible {
   }
   .wa__launcher::after { animation: none; opacity: 0; }
   .wa__panel.is-entering { opacity: 1; transform: none; }
+}
+
+/* ===================================================================
+   Submission celebration — floating balloons.
+   Injected by script.js on a successful enquiry, then removed. A
+   full-viewport, click-through layer of balloons that drift upward.
+   =================================================================== */
+.balloons {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -160px;
+  width: 46px;
+  height: 58px;
+  border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.55), transparent 45%),
+    var(--balloon-color, var(--beacon));
+  box-shadow: inset -5px -7px 12px rgba(0, 0, 0, 0.18);
+  transform: scale(var(--scale, 1));
+  transform-origin: center bottom;
+  animation: balloon-rise var(--rise-duration, 6s) var(--ease) forwards;
+  will-change: transform, opacity;
+}
+
+/* Knot at the base of the balloon */
+.balloon::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 9px;
+  height: 8px;
+  transform: translateX(-50%);
+  background: var(--balloon-color, var(--beacon));
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* Trailing string */
+.balloon::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: 72px;
+  margin-top: 4px;
+  transform: translateX(-50%);
+  background: rgba(90, 70, 50, 0.35);
+}
+
+@keyframes balloon-rise {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0) scale(var(--scale, 1));
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform:
+      translateY(-118vh)
+      translateX(var(--drift, 0))
+      rotate(var(--spin, 0))
+      scale(var(--scale, 1));
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: balloons are skipped in JS, but belt-and-suspenders. */
+@media (prefers-reduced-motion: reduce) {
+  .balloons {
+    display: none;
+  }
 }

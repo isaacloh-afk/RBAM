@@ -288,6 +288,9 @@
             formSuccess.focus();
           }
           form.reset();
+
+          // Celebrate: speak a congratulatory message + float balloons.
+          celebrateSubmission();
         })
         .catch(function () {
           // Error: surface an inline message and re-enable the button
@@ -300,6 +303,96 @@
           submitBtn.textContent = originalLabel;
         });
     });
+  }
+
+  /* ------------------------------------------------------------------
+     6b. Submission celebration — spoken message + floating balloons
+
+     Fired once on a successful enquiry. The Web Speech API call runs
+     inside the form-submit user gesture, so browsers allow it to play.
+     Both effects no-op gracefully where unsupported or when the user
+     prefers reduced motion.
+  ------------------------------------------------------------------ */
+
+  const CELEBRATION_MESSAGE =
+    "Well done on taking your first step towards financial freedom! " +
+    "Thank you for your submission. We will get back to you within one business day.";
+
+  function prefersReducedMotion() {
+    return (
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+
+  function speakCelebration() {
+    try {
+      if (!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(CELEBRATION_MESSAGE);
+      utterance.rate = 1;
+      utterance.pitch = 1.05;
+      utterance.volume = 1;
+      utterance.lang = "en-US";
+      window.speechSynthesis.speak(utterance);
+    } catch (err) {
+      /* speech is a nice-to-have; never let it break submission */
+    }
+  }
+
+  function launchBalloons() {
+    if (prefersReducedMotion()) return;
+
+    // Brand-warm palette for the balloons.
+    const colors = [
+      "#e2603a", // beacon coral
+      "#c0492f", // beacon red
+      "#9c3520", // deep clay
+      "#b5781a", // candlelight amber
+      "#d98b3f", // warm gold
+      "#7a6a5a", // warm stone
+    ];
+    const COUNT = 16;
+    const MAX_LIFE_MS = 9000;
+
+    const layer = document.createElement("div");
+    layer.className = "balloons";
+    layer.setAttribute("aria-hidden", "true");
+
+    for (let i = 0; i < COUNT; i++) {
+      const balloon = document.createElement("div");
+      balloon.className = "balloon";
+
+      // Deterministic-but-varied spread without Math.random dependence.
+      const leftPct = (i / COUNT) * 100 + ((i * 7) % 6);
+      const duration = 5.5 + ((i * 13) % 40) / 10; // 5.5s – 9.4s
+      const delay = ((i * 11) % 18) / 10; // 0 – 1.7s
+      const drift = (((i % 2 === 0 ? 1 : -1) * (20 + ((i * 9) % 60))) | 0); // ±px
+      const spin = (i % 2 === 0 ? 1 : -1) * (6 + (i % 5)) + "deg";
+      const scale = 0.7 + ((i * 17) % 60) / 100; // 0.7 – 1.29
+
+      balloon.style.setProperty("--balloon-color", colors[i % colors.length]);
+      balloon.style.setProperty("--rise-duration", duration + "s");
+      balloon.style.setProperty("--drift", drift + "px");
+      balloon.style.setProperty("--spin", spin);
+      balloon.style.setProperty("--scale", String(scale));
+      balloon.style.left = leftPct + "%";
+      balloon.style.animationDelay = delay + "s";
+
+      layer.appendChild(balloon);
+    }
+
+    document.body.appendChild(layer);
+
+    // Tidy up after the longest balloon (duration + delay) has finished.
+    window.setTimeout(function () {
+      layer.remove();
+    }, MAX_LIFE_MS);
+  }
+
+  function celebrateSubmission() {
+    speakCelebration();
+    launchBalloons();
   }
 
   /* ------------------------------------------------------------------
