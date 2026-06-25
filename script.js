@@ -292,8 +292,8 @@
         .catch(function () {
           // Error: surface an inline message and re-enable the button
           if (formError) {
-            formError.textContent =
-              "Sorry — something went wrong sending your message. Please try again, or email us directly.";
+            formError.innerHTML =
+              'Sorry — something went wrong sending your message. Please try again, or email us at <a href="mailto:isaac.loh@redbeaconam.com">isaac.loh@redbeaconam.com</a>.';
             formError.hidden = false;
           }
           submitBtn.disabled = false;

@@ -1082,6 +1082,18 @@ textarea:focus-visible {
   color: var(--beacon);
 }
 
+.footer__share {
+  margin-top: var(--space-2);
+}
+
+.footer__share-label {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mist);
+}
+
 .footer__bottom {
   display: flex;
   flex-direction: column;
