@@ -4,6 +4,8 @@ A single-page marketing and enquiry website for **Red Beacon Asset Management Pt
 
 🌐 **Live site:** https://isaacloh-afk.github.io/RBAM/
 
+![Red Beacon Asset Management website](screenshot.png)
+
 ---
 
 ## Overview
