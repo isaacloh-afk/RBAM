@@ -12,7 +12,11 @@
       "Bash(cp /private/tmp/claude-501/-Users-isaacloh-VS-code/48d93414-1666-4b98-8e23-cdd4ac26e2a2/scratchpad/ghdir/gh_2.95.0_macOS_arm64/bin/gh ~/.local/bin/gh)",
       "Bash(chmod +x ~/.local/bin/gh)",
       "Bash(~/.local/bin/gh --version)",
-      "Bash(gh repo *)"
+      "Bash(gh repo *)",
+      "Bash(command -v gh)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(find / -name gh -type f 2>/dev/null | head; ls ~/.local/bin 2>/dev/null | grep -i gh; ls /pkg/env/global/bin 2>/dev/null | grep -i gh)",
+      "Read(//pkg/env/global/**)"
     ]
   }
 }
