@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Beacon Asset Management Pte Ltd — Independent Multi-Asset Solutions, Singapore</title>
+  <meta
+    name="description"
+    content="Red Beacon Asset Management Pte Ltd is a reliable, independent multi-asset management team headquartered in Singapore, delivering resilient and diversified portfolio solutions backed by independent expertise."
+  />
+
+  <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ============================= NAVBAR ============================= -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar__inner">
+      <a href="#home" class="wordmark" aria-label="Red Beacon Asset Management home">
+        <span class="wordmark__amp">Red</span> Beacon
+        <span class="wordmark__sub">Asset Management</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-expanded="false"
+          aria-controls="navMenu"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="nav__bar"></span>
+          <span class="nav__bar"></span>
+          <span class="nav__bar"></span>
+        </button>
+
+        <ul class="nav__menu" id="navMenu">
+          <li><a class="nav__link" href="#home">Home</a></li>
+          <li><a class="nav__link" href="#about">About</a></li>
+          <li><a class="nav__link" href="#testimonials">Testimonials</a></li>
+          <li><a class="nav__link nav__link--cta" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="home">
+      <div class="hero__overlay"></div>
+      <div class="container hero__inner">
+        <div class="hero__content reveal">
+          <p class="hero__eyebrow">Singapore &middot; Independent &middot; Multi-Asset</p>
+          <h1 class="hero__title">Grow and protect what matters.</h1>
+          <p class="hero__subtitle">
+            Reliable, independent multi-asset management for professionals and families.
+            We build resilient, diversified portfolios — and stay on course with you
+            through every market and every stage of life.
+          </p>
+          <a href="#contact" class="btn btn--primary hero__cta">Book a Consultation</a>
+        </div>
+
+        <!-- Trust stats -->
+        <ul class="stats reveal">
+          <li class="stat">
+            <span class="stat__value">$2B+</span>
+            <span class="stat__label">Assets advised</span>
+          </li>
+          <li class="stat">
+            <span class="stat__value">20+</span>
+            <span class="stat__label">Years of experience</span>
+          </li>
+          <li class="stat">
+            <span class="stat__value">98%</span>
+            <span class="stat__label">Client retention</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ SERVICES =========================== -->
+    <section class="section services" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">What we do</p>
+          <h2 class="section__title" id="services-heading">A complete view of your financial life</h2>
+          <p class="section__lead">
+            Every plan is built around your goals, not a product shelf. These are the
+            disciplines we bring together on your behalf.
+          </p>
+        </div>
+
+        <div class="cards">
+          <!-- Card: Wealth Planning -->
+          <article class="card reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18" />
+                <path d="M6 21V9l6-4 6 4v12" />
+                <path d="M10 21v-5h4v5" />
+              </svg>
+            </div>
+            <h3 class="card__title">Wealth Planning</h3>
+            <p class="card__desc">A clear, written roadmap aligning your assets with what you want from life.</p>
+          </article>
+
+          <!-- Card: Retirement Strategy -->
+          <article class="card reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+            </div>
+            <h3 class="card__title">Retirement Strategy</h3>
+            <p class="card__desc">Income that lasts — structured to weather markets and time alike.</p>
+          </article>
+
+          <!-- Card: Portfolio Management -->
+          <article class="card reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19V5" />
+                <path d="M4 19h16" />
+                <path d="M8 16l3-4 3 2 4-6" />
+              </svg>
+            </div>
+            <h3 class="card__title">Portfolio Management</h3>
+            <p class="card__desc">Diversified, low-cost portfolios managed with discipline, not drama.</p>
+          </article>
+
+          <!-- Card: Estate Planning -->
+          <article class="card reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+            </div>
+            <h3 class="card__title">Estate Planning</h3>
+            <p class="card__desc">Pass on your legacy with clarity, tax efficiency, and care for those you love.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ABOUT ============================ -->
+    <section class="section about" id="about" aria-labelledby="about-heading">
+      <div class="container about__inner">
+        <div class="about__text reveal">
+          <p class="section__eyebrow">Who we are</p>
+          <h2 class="section__title" id="about-heading">Advice you can trust, for the long term</h2>
+          <p>
+            Red Beacon Asset Management is a reliable, independent multi-asset
+            management team headquartered in Singapore, built on a simple belief: sound
+            financial decisions compound quietly over a lifetime. We act in your interest,
+            always — paid by you, never by commissions or product sponsors.
+          </p>
+          <p>
+            We work with a limited number of households so that every relationship receives
+            genuine attention. No jargon, no pressure, no chasing the latest fad — just
+            steady, considered guidance through every market and every stage of life.
+          </p>
+        </div>
+
+        <ul class="principles reveal">
+          <li class="principle">
+            <span class="principle__mark" aria-hidden="true">01</span>
+            <div>
+              <h3 class="principle__title">Fiduciary by design</h3>
+              <p class="principle__desc">Your interests come first — in writing and in practice.</p>
+            </div>
+          </li>
+          <li class="principle">
+            <span class="principle__mark" aria-hidden="true">02</span>
+            <div>
+              <h3 class="principle__title">Transparent fees</h3>
+              <p class="principle__desc">Clear, flat advisory fees. No commissions, no surprises.</p>
+            </div>
+          </li>
+          <li class="principle">
+            <span class="principle__mark" aria-hidden="true">03</span>
+            <div>
+              <h3 class="principle__title">Patient by nature</h3>
+              <p class="principle__desc">We invest for decades, not headlines or quarters.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =========================== TESTIMONIALS ======================== -->
+    <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">In their words</p>
+          <h2 class="section__title" id="testimonials-heading">Trusted across generations</h2>
+        </div>
+
+        <div
+          class="carousel reveal"
+          id="carousel"
+          aria-roledescription="carousel"
+          aria-label="Client testimonials"
+        >
+          <div class="carousel__viewport" aria-live="polite">
+            <!-- Slide 1 -->
+            <figure class="slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <blockquote class="slide__quote">
+                "Red Beacon gave us a plan we actually understand. For the first time,
+                retirement feels like a decision rather than a worry."
+              </blockquote>
+              <figcaption class="slide__person">
+                <span class="avatar" aria-hidden="true">MH</span>
+                <span class="slide__meta">
+                  <span class="slide__name">Margaret &amp; David H.</span>
+                  <span class="slide__role">Retired Engineer &amp; Teacher</span>
+                </span>
+              </figcaption>
+            </figure>
+
+            <!-- Slide 2 -->
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="2 of 3" hidden>
+              <blockquote class="slide__quote">
+                "They talked me through a volatile year without a single sales pitch. Calm,
+                candid advice — exactly what I needed and rarely find."
+              </blockquote>
+              <figcaption class="slide__person">
+                <span class="avatar" aria-hidden="true">AR</span>
+                <span class="slide__meta">
+                  <span class="slide__name">Anita R.</span>
+                  <span class="slide__role">Physician &amp; Practice Owner</span>
+                </span>
+              </figcaption>
+            </figure>
+
+            <!-- Slide 3 -->
+            <figure class="slide" role="group" aria-roledescription="slide" aria-label="3 of 3" hidden>
+              <blockquote class="slide__quote">
+                "We came for portfolio help and stayed for the partnership. Our estate plan
+                finally reflects the family we are, not the family we were a decade ago."
+              </blockquote>
+              <figcaption class="slide__person">
+                <span class="avatar" aria-hidden="true">JT</span>
+                <span class="slide__meta">
+                  <span class="slide__name">James &amp; Lin T.</span>
+                  <span class="slide__role">Business Owners</span>
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="carousel__controls">
+            <button class="carousel__btn" id="prevBtn" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+            </button>
+            <div class="carousel__dots" id="dots" role="tablist" aria-label="Choose testimonial"></div>
+            <button class="carousel__btn" id="nextBtn" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CONTACT ========================== -->
+    <section class="section contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact__inner">
+        <div class="contact__intro reveal">
+          <p class="section__eyebrow">Get in touch</p>
+          <h2 class="section__title" id="contact-heading">Book a consultation</h2>
+          <p class="section__lead">
+            Tell us a little about your situation. We'll respond within one business day to
+            arrange a relaxed, no-obligation conversation.
+          </p>
+          <p class="contact__assurance">
+            Your details stay private and are never shared.
+          </p>
+        </div>
+
+        <!-- Enquiry form -->
+        <form class="form reveal" id="enquiryForm" novalidate>
+          <!-- Honeypot field: hidden from users, traps bots. Keep empty. -->
+          <div class="honey" aria-hidden="true">
+            <label for="_honey">Leave this field empty</label>
+            <input type="text" id="_honey" name="_honey" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="name">Full name <span class="req">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" aria-describedby="name-error" />
+              <p class="field__error" id="name-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="email-error" />
+              <p class="field__error" id="email-error" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" aria-describedby="phone-error" />
+              <p class="field__error" id="phone-error" role="alert"></p>
+            </div>
+
+            <div class="field">
+              <label for="interest">Investment interest</label>
+              <select id="interest" name="interest">
+                <option value="Wealth Planning">Wealth Planning</option>
+                <option value="Retirement">Retirement</option>
+                <option value="Portfolio Management">Portfolio Management</option>
+                <option value="Estate Planning">Estate Planning</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">How can we help? <span class="req">*</span></label>
+            <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="message-error"></textarea>
+            <p class="field__error" id="message-error" role="alert"></p>
+          </div>
+
+          <button type="submit" class="btn btn--primary form__submit" id="submitBtn">
+            Book a Consultation
+          </button>
+
+          <!-- Inline form-level error (network/server failures) -->
+          <p class="form__status form__status--error" id="formError" role="alert" hidden></p>
+        </form>
+
+        <!-- Success message (revealed by JS, replaces the form) -->
+        <div class="form__success reveal" id="formSuccess" hidden>
+          <div class="form__success-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+          </div>
+          <h3>Thank you</h3>
+          <p>Thanks — we'll be in touch within one business day.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER =========================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#home" class="wordmark wordmark--footer">
+          <span class="wordmark__amp">Red</span> Beacon
+        </a>
+        <p class="footer__tagline">Resilient, diversified portfolios — backed by independent expertise.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <div class="container footer__bottom">
+      <p class="footer__copy">&copy; <span id="year"></span> Red Beacon Asset Management Pte Ltd. All rights reserved.</p>
+      <p class="footer__disclaimer">
+        This website is for informational purposes only and does not constitute financial advice.
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew --version)",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//usr/local/bin/**)",
+      "Bash(curl -fsSL https://api.github.com/repos/cli/cli/releases/latest)",
+      "Bash(curl -fsSL -o gh.tar.gz https://github.com/cli/cli/releases/download/v2.95.0/gh_2.95.0_macOS_arm64.zip)",
+      "Bash(mkdir -p ghdir)",
+      "Bash(unzip -oq ../gh.tar.gz)",
+      "Bash(mkdir -p ~/.local/bin)",
+      "Bash(cp /private/tmp/claude-501/-Users-isaacloh-VS-code/48d93414-1666-4b98-8e23-cdd4ac26e2a2/scratchpad/ghdir/gh_2.95.0_macOS_arm64/bin/gh ~/.local/bin/gh)",
+      "Bash(chmod +x ~/.local/bin/gh)",
+      "Bash(~/.local/bin/gh --version)"
+    ]
+  }
+}

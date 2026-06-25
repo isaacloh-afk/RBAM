@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Project internal docs (keep out of public repo)
+CLAUDE.md
+
+# Logs & temp
+*.log
+.cache/
+tmp/
