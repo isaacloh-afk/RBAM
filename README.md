@@ -60,6 +60,7 @@ There is no test suite, linter, or build step.
 - **Testimonials carousel** — data-driven by DOM order; add/remove a `.slide` and the dots, auto-rotate, prev/next, and keyboard arrows adapt automatically.
 - **Responsive nav** — sticky navbar collapses to a hamburger menu below 768px.
 - **Enquiry form** — client-side validation, honeypot spam protection, and AJAX submission via [FormSubmit](https://formsubmit.co/).
+- **WhatsApp chat widget** — floating launcher with suggested-query chips that deep-link to `wa.me` with a prefilled message; the destination number lives in the `WHATSAPP_NUMBER` constant in `script.js`.
 - **SEO** — canonical, Open Graph / Twitter Card meta, `FinancialService` JSON-LD, `robots.txt`, and `sitemap.xml`.
 
 ## Enquiry form

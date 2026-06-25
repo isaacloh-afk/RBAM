@@ -1220,3 +1220,280 @@ textarea:focus-visible {
     border-bottom: none;
   }
 }
+
+/* ===================================================================
+   WhatsApp chat widget — floating launcher + suggested-query panel.
+   Uses brand tokens; the launcher keeps WhatsApp's signature green so
+   it reads as the familiar chat affordance.
+   =================================================================== */
+:root {
+  --wa-green: #25d366;        /* WhatsApp signature green */
+  --wa-green-deep: #1da851;   /* pressed / hover */
+}
+
+.wa {
+  position: fixed;
+  right: clamp(1rem, 4vw, 2rem);
+  bottom: clamp(1rem, 4vw, 2rem);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.85rem;
+}
+
+/* ---- Launcher ---- */
+.wa__launcher {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: var(--wa-green);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  place-items: center;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+.wa__launcher:hover {
+  background: var(--wa-green-deep);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.wa__launcher:focus-visible {
+  outline: 3px solid var(--beacon);
+  outline-offset: 3px;
+}
+.wa__launcher-icon,
+.wa__launcher-close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  transition: opacity 0.2s var(--ease), transform 0.3s var(--ease);
+}
+.wa__launcher-close {
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+.wa.is-open .wa__launcher-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+.wa.is-open .wa__launcher-close {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Gentle attention pulse on the launcher (stops once opened) */
+.wa__launcher::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--wa-green);
+  animation: wa-pulse 2.6s var(--ease) infinite;
+}
+.wa.is-open .wa__launcher::after {
+  animation: none;
+  opacity: 0;
+}
+@keyframes wa-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ---- Panel ---- */
+.wa__panel {
+  width: min(360px, calc(100vw - 2rem));
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transform-origin: bottom right;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.wa__panel[hidden] {
+  display: none;
+}
+/* Entry animation when shown */
+.wa__panel.is-entering {
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+}
+
+.wa__header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+  color: #fff;
+}
+.wa__avatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  display: grid;
+  place-items: center;
+}
+.wa__avatar svg {
+  width: 22px;
+  height: 22px;
+}
+.wa__heading {
+  flex: 1;
+  min-width: 0;
+}
+.wa__title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 0.98rem;
+  font-weight: 540;
+  line-height: 1.2;
+  color: #fff;
+}
+.wa__status {
+  margin: 0.1rem 0 0;
+  font-size: 0.74rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.82);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.wa__online {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--wa-green);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+.wa__close {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s var(--ease);
+}
+.wa__close svg { width: 18px; height: 18px; }
+.wa__close:hover { background: rgba(255, 255, 255, 0.16); }
+.wa__close:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+
+.wa__body {
+  padding: 1rem;
+  max-height: min(60vh, 440px);
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 1px 1px, var(--paper-line) 1px, transparent 0) 0 0 / 18px 18px,
+    var(--deep);
+}
+.wa__bubble {
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  border-radius: 4px 14px 14px 14px;
+  padding: 0.7rem 0.85rem;
+  box-shadow: var(--shadow-sm);
+  max-width: 90%;
+}
+.wa__bubble p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--paper-ink);
+}
+.wa__prompt {
+  margin: 1rem 0 0.6rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--paper-muted);
+}
+.wa__chips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.wa__chip {
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--red-deep);
+  background: var(--paper);
+  border: 1px solid var(--hairline-strong);
+  border-radius: 999px;
+  padding: 0.55rem 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease),
+    transform 0.15s var(--ease);
+}
+.wa__chip:hover {
+  background: var(--steel-soft);
+  border-color: var(--red);
+  transform: translateX(2px);
+}
+.wa__chip.is-selected {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+.wa__chip:focus-visible {
+  outline: 2px solid var(--beacon);
+  outline-offset: 2px;
+}
+
+.wa__footer {
+  padding: 0.8rem 1rem;
+  border-top: 1px solid var(--paper-line);
+  background: var(--paper);
+}
+.wa__send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: var(--wa-green);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s var(--ease), transform 0.15s var(--ease);
+}
+.wa__send svg { width: 18px; height: 18px; }
+.wa__send:hover { background: var(--wa-green-deep); transform: translateY(-1px); }
+.wa__send:focus-visible { outline: 3px solid var(--beacon); outline-offset: 2px; }
+
+@media (max-width: 480px) {
+  .wa__panel { width: calc(100vw - 2rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa__launcher,
+  .wa__launcher-icon,
+  .wa__launcher-close,
+  .wa__panel,
+  .wa__chip,
+  .wa__send {
+    transition: none;
+  }
+  .wa__launcher::after { animation: none; opacity: 0; }
+  .wa__panel.is-entering { opacity: 1; transform: none; }
+}

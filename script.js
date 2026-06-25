@@ -301,4 +301,87 @@
         });
     });
   }
+
+  /* ------------------------------------------------------------------
+     7. WhatsApp chat widget — launcher, suggested queries, deep-link
+
+     Suggested-query chips set the message; the "Open WhatsApp" link
+     (and a tapped chip) deep-links to wa.me with the message prefilled.
+  ------------------------------------------------------------------ */
+
+  // Destination WhatsApp number in international format, digits only.
+  const WHATSAPP_NUMBER = "6583232023";
+
+  const waWidget = document.getElementById("waWidget");
+  const waLauncher = document.getElementById("waLauncher");
+  const waPanel = document.getElementById("waPanel");
+  const waClose = document.getElementById("waClose");
+  const waChips = document.getElementById("waChips");
+  const waSend = document.getElementById("waSend");
+
+  if (waWidget && waLauncher && waPanel && waSend) {
+    const DEFAULT_MSG = "Hello Red Beacon, I'd like to find out more.";
+    let currentMsg = DEFAULT_MSG;
+
+    function waLink(message) {
+      return (
+        "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message)
+      );
+    }
+
+    function setMessage(message) {
+      currentMsg = message;
+      waSend.href = waLink(message);
+    }
+    setMessage(DEFAULT_MSG);
+
+    function openPanel() {
+      waPanel.hidden = false;
+      waPanel.classList.add("is-entering");
+      // Force reflow so the entry transition runs, then settle.
+      void waPanel.offsetWidth;
+      waPanel.classList.remove("is-entering");
+      waWidget.classList.add("is-open");
+      waLauncher.setAttribute("aria-expanded", "true");
+    }
+
+    function closePanel() {
+      waWidget.classList.remove("is-open");
+      waLauncher.setAttribute("aria-expanded", "false");
+      waPanel.hidden = true;
+    }
+
+    function togglePanel() {
+      if (waPanel.hidden) openPanel();
+      else closePanel();
+    }
+
+    waLauncher.addEventListener("click", togglePanel);
+    if (waClose) waClose.addEventListener("click", closePanel);
+
+    // Chip click: highlight, set the message, and open WhatsApp directly.
+    if (waChips) {
+      const chips = Array.prototype.slice.call(
+        waChips.querySelectorAll(".wa__chip")
+      );
+      chips.forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          const query = chip.getAttribute("data-query") || DEFAULT_MSG;
+          chips.forEach(function (c) {
+            c.classList.toggle("is-selected", c === chip);
+          });
+          setMessage(query);
+          window.open(waLink(query), "_blank", "noopener");
+        });
+      });
+    }
+
+    // Close on Escape when the panel is open
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !waPanel.hidden) {
+        closePanel();
+        waLauncher.focus();
+      }
+    });
+  }
 })();

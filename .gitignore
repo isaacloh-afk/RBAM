@@ -16,6 +16,7 @@ CLAUDE.md
 
 # Claude Code / agent skill tooling (local, not part of the published site)
 .agents/
+.claude/agents/
 .claude/skills/
 .mcp.json
 skills-lock.json

@@ -435,6 +435,59 @@
     </div>
   </footer>
 
+  <!-- ===================== WHATSAPP CHAT WIDGET ===================== -->
+  <!-- Floating launcher + chat panel. Suggested queries deep-link to
+       wa.me with a prefilled message. Destination number lives in the
+       WHATSAPP_NUMBER constant in script.js. -->
+  <div class="wa" id="waWidget">
+    <!-- Chat panel -->
+    <div class="wa__panel" id="waPanel" role="dialog" aria-modal="false" aria-labelledby="wa-title" hidden>
+      <div class="wa__header">
+        <span class="wa__avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18" /><path d="M6 21V9l6-4 6 4v12" /><path d="M10 21v-5h4v5" />
+          </svg>
+        </span>
+        <div class="wa__heading">
+          <p class="wa__title" id="wa-title">Red Beacon Asset Management</p>
+          <p class="wa__status"><span class="wa__online" aria-hidden="true"></span>Typically replies within minutes</p>
+        </div>
+        <button class="wa__close" id="waClose" type="button" aria-label="Close chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" /></svg>
+        </button>
+      </div>
+
+      <div class="wa__body">
+        <div class="wa__bubble">
+          <p>Hello 👋 Thanks for stopping by. How can we help with your wealth journey today?</p>
+        </div>
+        <p class="wa__prompt">Choose a question to start a WhatsApp chat:</p>
+        <div class="wa__chips" id="waChips">
+          <button class="wa__chip" type="button" data-query="I'd like to book a consultation with Red Beacon.">Book a consultation</button>
+          <button class="wa__chip" type="button" data-query="Can you tell me more about your wealth planning services?">Tell me about wealth planning</button>
+          <button class="wa__chip" type="button" data-query="How do your advisory fees work?">How do your fees work?</button>
+          <button class="wa__chip" type="button" data-query="I'd like help planning for retirement.">Help with retirement planning</button>
+          <button class="wa__chip" type="button" data-query="Hello, I have a general enquiry.">Something else</button>
+        </div>
+      </div>
+
+      <div class="wa__footer">
+        <a class="wa__send" id="waSend" href="#" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2z" /></svg>
+          Open WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Launcher button -->
+    <button class="wa__launcher" id="waLauncher" type="button" aria-expanded="false" aria-controls="waPanel" aria-label="Chat with us on WhatsApp">
+      <svg class="wa__launcher-icon" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+        <path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.9 1 1-4.7-.3-.4C5.4 18 5 16.5 5 15c0-6 4.9-10.9 11-10.9S27 9 27 15s-4.9 9.8-11 9.8zm6-7.5c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z" />
+      </svg>
+      <svg class="wa__launcher-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" /></svg>
+    </button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
