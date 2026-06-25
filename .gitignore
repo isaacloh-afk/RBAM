@@ -14,6 +14,12 @@
 # Project internal docs (keep out of public repo)
 CLAUDE.md
 
+# Claude Code / agent skill tooling (local, not part of the published site)
+.agents/
+.claude/skills/
+.mcp.json
+skills-lock.json
+
 # Logs & temp
 *.log
 .cache/

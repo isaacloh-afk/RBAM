@@ -15,6 +15,7 @@ Built with **vanilla HTML, CSS, and JavaScript** — no frameworks, no build too
 The page is a single scrollable layout with anchor-linked sections:
 
 - `#home` — hero
+- `#services` — what the firm does
 - `#about` — firm overview
 - `#testimonials` — client testimonials carousel
 - `#contact` — enquiry form
@@ -26,6 +27,8 @@ The page is a single scrollable layout with anchor-linked sections:
 | `index.html` | All markup — one page, anchor-linked sections. |
 | `styles.css` | All styling. Design tokens (colors, spacing, type) live in the `:root` block. |
 | `script.js` | All behavior, wrapped in one IIFE — nav, scroll reveals, carousel, form. |
+| `favicon.svg` | Brand favicon (beacon mark). |
+| `robots.txt` / `sitemap.xml` | SEO crawl directives + sitemap referencing the live URL. |
 | `.github/workflows/deploy.yml` | GitHub Actions workflow that deploys to GitHub Pages on push. |
 
 ## Run locally
@@ -57,6 +60,7 @@ There is no test suite, linter, or build step.
 - **Testimonials carousel** — data-driven by DOM order; add/remove a `.slide` and the dots, auto-rotate, prev/next, and keyboard arrows adapt automatically.
 - **Responsive nav** — sticky navbar collapses to a hamburger menu below 768px.
 - **Enquiry form** — client-side validation, honeypot spam protection, and AJAX submission via [FormSubmit](https://formsubmit.co/).
+- **SEO** — canonical, Open Graph / Twitter Card meta, `FinancialService` JSON-LD, `robots.txt`, and `sitemap.xml`.
 
 ## Enquiry form
 

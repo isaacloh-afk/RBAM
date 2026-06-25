@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://isaacloh-afk.github.io/RBAM/sitemap.xml
